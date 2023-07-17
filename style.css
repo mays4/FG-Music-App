@@ -214,6 +214,12 @@ i{
 .container{
   padding: 27px 100px 0 97px;
 }
+h1{
+  font-size: 30px;
+}
+.next2{
+  margin-left: 20px;
+}
 
 }
 @media (max-width: 375px) {
@@ -333,7 +339,7 @@ margin-right: 12px;
   .dot{
    padding: 8px;
     margin-top: 0px;
-    /* margin-right: 20px; */
+    
     font-size: 8px;
     background: transparent;
     
