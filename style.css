@@ -215,10 +215,33 @@ i{
   padding: 27px 100px 0 97px;
 }
 h1{
-  font-size: 30px;
+  font-size: 28px;
+}
+.next{
+  margin: 51px 5px 0 20px;
 }
 .next2{
   margin-left: 20px;
+}
+.title{
+  margin-top: 52px;
+
+
+
+}
+.container{
+  padding: 27px 30px 0 20px;
+}
+.share{
+  margin-left: 10px;
+  
+}
+.sub-sub-container{
+
+  margin-right: 20px;
+}
+.follow{
+  margin-left: 10px;
 }
 
 }
