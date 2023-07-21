@@ -4,8 +4,8 @@ function App() {
     setText(!text);
 
   };
-  
-    
+
+
   const dummyData = [
     {
       id: 0,
@@ -39,39 +39,39 @@ function App() {
       audio:"./",
       isFilled:false
     },
-   
-     
-    
+
+
+
   ];
   const [songs, setSongs] = React.useState(dummyData);
 
   const ChangeColor=(Id)=>{
-   
+
    let mapped = songs.map((item)=>{
      if(item.id === Id ){
-  
+
       return {...item, isFilled:!item.isFilled}
  }
  return {...item}
  }
-    
-  
-    
+
+
+
 
 )
-     
-  
-    
+
+
+
    setSongs(mapped) 
-   
+
   }
- 
+
 
   return (
     <div className="app">
       <nav>
         <div className="next">
-       
+
           <img className="arrow" src="./assests/arrow.png" alt="arrow" />
         </div>
 
@@ -87,7 +87,7 @@ function App() {
       <main>
         <div className="container">
           <div className="sub-container">
-         
+
           <div className="one">
               {" "}
               <p>Popular</p>
@@ -116,11 +116,11 @@ function App() {
                 />
               </div>
             </div>
-            
-            
+
+
           </div>
           {songs.map((item) => (
-          
+
             <div className="body-container" key={item.id}> 
               <div className="music-sub">
                 <div>
@@ -138,25 +138,25 @@ function App() {
                 </div>
               </div>
               <div className="icons-sub">
-               
-                
+
+
             <div  onClick={()=>ChangeColor(item.id)}>
             {!(item.isFilled ) ?  
                  ( 
-                  
+
                  <img
                     className="heart"
                     src="./assests/heart.png"
                     alt="heart"
-              
+
                     />
-                
+
                   ):
-                  
+
                   (
-                    
+
                   <i className="fas fa-heart"></i>
-            
+
                   )
 }
       </div>
@@ -171,8 +171,8 @@ function App() {
               </div>
             </div>
           ))}
-           
-          
+
+
         </div>
       </main>
     </div>
