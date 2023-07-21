@@ -1,180 +1,62 @@
 function App() {
-  const [text, setText] = React.useState("unfollow");
-  const handleChange = (e) => {
-    setText(!text);
+ const [isShowing, setIsShowing]= React.useState(false);
+ const[add, SetAdd] = React.useState([]);
+ const [value,setValue]=React.useState("");
+  const [color, setColor] = React.useState("");
+  const [isInitialRender, setIsInitialRender] = React.useState(true);
 
-  };
+  let randomcolor=`#${Math.floor(Math.random() * 0x1011011).toString(16).padStart(6, 0)}`;
+  let index =0;
   
-    
-  const dummyData = [
-    {
-      id: 0,
-      title: "lofi rain",
-      description: "a girl and cat",
-      image: "./assests/song1.png",
-      audio:"./",
-      isFilled:false
-    },
-    {
-      id: 1,
-      title: "Atrapalos Ya!",
-      description: "Pokemon",
-      image: "./assests/song2.png",
-      audio:"./",
-      isFilled:false
-    },
-    {
-      id: 2,
-      title: "Catch You Catch me",
-      description: "GUMI",
-      image: "./assests/song3.png",
-      audio:"./",
-      isFilled:false
-    },
-    {
-      id: 3,
-      title: "Shinzo wo Sasgoyo~",
-      description: "Kinked Horizon",
-      image: "./assests/song4.png",
-      audio:"./",
-      isFilled:false
-    },
-   
-     
-    
-  ];
-  const [songs, setSongs] = React.useState(dummyData);
 
-  const ChangeColor=(Id)=>{
-   
-   let mapped = songs.map((item)=>{
-     if(item.id === Id ){
-    
-      return {...item, isFilled:!item.isFilled}
- }
- return {...item}
- }
-    
-  
-    
 
-)
-     
-  
-    
-   setSongs(mapped) 
-   
+  const handleClick= ()=>{
+    setIsShowing(!isShowing)
   }
- 
-
+    
+ const handleChange=(e)=>{
+  setValue(e.target.value)
+ }
+const handleAdding=()=>{
+  const list=[];
+  
+    list.push(<div className="squres-adding" key={index+1} style={{backgroundColor:
+      `${randomcolor}`}}><p >{value}</p></div>)
+  
+  SetAdd([...add,list]);
+  setValue("");
+  
+}
   return (
     <div className="app">
-      <nav>
-        <div className="next">
-       
-          <img className="arrow" src="./assests/arrow.png" alt="arrow" />
-        </div>
+     <nav >
+     <h1>My Sticky Notes</h1>
+     </nav>
+    <main >
+      <div className="container">
+      <div className="inside" >
+       {add}
 
-        <div className="image">
-          <img src="./assests/song1.png" alt="girl with cat" />
-        </div>
-        <div className="title">
-          <h1> a girl and a cat</h1>
-          <p>661,250 monthly listeners</p>
-        </div>
-      </nav>
-
-      <main>
-        <div className="container">
-          <div className="sub-container">
-         
-          <div className="one">
-              {" "}
-              <p>Popular</p>
-            </div>
-            <div className="sub-sub-container">
-              <div className="next2">
-                <img
-                  className="arrow2"
-                  src="./assests/play.png"
-                  alt="arrow2"
-                />
-              </div>
-
-              <div>
-                {text ? (
-                <button className="follow" onClick={handleChange}>Follow</button>):(
-                  <button className="follow" onClick={handleChange}>Following</button>
-                )
-              }
-              </div>
-              <div>
-                <img
-                  className="share"
-                  src="./assests/share.png"
-                  alt="share"
-                />
-              </div>
-            </div>
-            
-            
-          </div>
-          {songs.map((item) => (
-          
-            <div className="body-container" key={item.id}> 
-              <div className="music-sub">
-                <div>
-                  {" "}
-                  <img
-                    alt="logo"
-                    src={item.image}
-                    className="music-log"
-                  />
-                </div>
-
-                <div className="list">
-                  <h1 className="list-title">{item.title}</h1>
-                  <h2 className="list-description">{item.description}</h2>
-                </div>
-              </div>
-              <div className="icons-sub">
-               
-                
-            <div  onClick={()=>ChangeColor(item.id)}>
-            {!(item.isFilled ) ?  
-                 ( 
-                  
-                 <img
-                    className="heart"
-                    src="./assests/heart.png"
-                    alt="heart"
-              
-                    />
-                
-                  ):
-                  
-                  (
-                    
-                  <i className="fas fa-heart"></i>
-            
-                  )
-}
       </div>
-
-                <div>
-                  <img
-                    className="dot"
-                    src="./assests/dot.png"
-                    alt="dot"
-                  />
-                </div>
-              </div>
-            </div>
-          ))}
-           
-          
+      <div  className="inside-button">
+      <button className="btn" onClick={handleClick} >+
+ 
+      
+     
+    </button>
+    </div>
+    </div>
+    <div className="sub-container">
+      {isShowing && (
+      <div className="note">
+        <textarea type="text" placeholder="Add A note" value={value} onChange={handleChange} />
+        <button className="add" onClick={handleAdding}>Add Sticky Note</button>
         </div>
-      </main>
+        )
+      }
+    </div>
+    </main>
+      
     </div>
   );
 }
